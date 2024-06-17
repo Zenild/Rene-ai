@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { config } = global.GoatBot;
+const { config } = global.ReneBot;
 const { log, getText } = global.utils;
 if (global.timeOutUptime != undefined)
 	clearTimeout(global.timeOutUptime);
@@ -22,7 +22,7 @@ setTimeout(async function autoUptime() {
 		await axios.get(myUrl);
 		if (status != 'ok') {
 			status = 'ok';
-			log.info("UPTIME", "Bot is online");
+			log.info("UPTIME", "Le bot est en ligne");
 			// Custome notification here
 		}
 	}
@@ -32,12 +32,12 @@ setTimeout(async function autoUptime() {
 			return;
 		status = 'failed';
 
-		if (err.statusAccountBot == "can't login") {
-			log.err("UPTIME", "Can't login account bot");
+		if (err.statusAccountBot == "chargement impossible") {
+			log.err("UPTIME", "impossible de connecter au compte ");
 			// Custome notification here
 		}
-		else if (err.statusAccountBot == "block spam") {
-			log.err("UPTIME", "Your account is blocked");
+		else if (err.statusAccountBot == "arrête spam") {
+			log.err("UPTIME", "Votre compte est bloqué");
 			// Custome notification here
 		}
 	}
