@@ -36,7 +36,7 @@ module.exports = async (api) => {
 		await require("./connectDB.js")();
 
 	const { utils, utils: { drive } } = global;
-	const { config } = global.GoatBot;
+	const { config } = global.ReneBot;
 	const { expireVerifyCode } = config.dashBoard;
 	const { gmailAccount, gRecaptcha } = config.credentials;
 
