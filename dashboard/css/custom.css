@@ -76,12 +76,12 @@
 .message .text {
 	font-size: 16px;
 	font-weight: 400;
-	color: #666666;
+	color: #6666;
 }
 
 .message .text.text-1 {
 	font-weight: 600;
-	color: #333;
+	color: #3333;
 }
 
 .toast .close {
