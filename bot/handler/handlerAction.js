@@ -7,7 +7,7 @@ module.exports = (api, threadModel, userModel, dashBoardModel, globalModel, user
 	return async function (event) {
 		// Check if the bot is in the inbox and anti inbox is enabled
 		if (
-			global.GoatBot.config.antiInbox == true &&
+			global.ReneBot.config.antiInbox == true &&
 			(event.senderID == event.threadID || event.userID == event.senderID || event.isGroup == false) &&
 			(event.senderID || event.userID || event.isGroup == false)
 		)
