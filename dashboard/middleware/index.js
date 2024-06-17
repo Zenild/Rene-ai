@@ -14,7 +14,7 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 				return res.status(401).send({
 					status: "error",
 					error: "PERMISSION_DENIED",
-					message: "Bạn chưa đăng nhập"
+					message: "erreur"
 				});
 
 			req.flash("errors", { msg: "You must be logged in" });
@@ -29,7 +29,7 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 				return res.status(401).send({
 					status: "error",
 					error: "PERMISSION_DENIED",
-					message: "Đã xảy ra lỗi"
+					message: "null"
 				});
 
 			res.redirect("/");
@@ -43,10 +43,10 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 				return res.status(401).send({
 					status: "error",
 					error: "PERMISSION_DENIED",
-					message: "Bạn chưa xác thực id Facebook"
+					message: "le compte est ban "
 				});
 
-			req.flash("errors", { msg: "Bạn cần phải xác thực id facebook trước khi thực hiện hành động này" });
+			req.flash("errors", { msg: "Utilise un uid Facebook correct " });
 			res.redirect(`/verifyfbid?redirect=${req.originalUrl}`);
 		},
 
@@ -58,7 +58,7 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 				return res.status(401).send({
 					status: "error",
 					error: "PERMISSION_DENIED",
-					message: "Đã xảy ra lỗi, vui lòng thử lại"
+					message: "null"
 				});
 
 			res.redirect("/register");
@@ -74,7 +74,7 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 					return res.status(401).send({
 						status: "error",
 						error: "PERMISSION_DENIED",
-						message: "Không tìm thấy nhóm này"
+						message: "null"
 					});
 
 				req.flash("errors", { msg: "Thread not found" });
@@ -87,10 +87,10 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 					return res.status(401).send({
 						status: "error",
 						error: "PERMISSION_DENIED",
-						message: "Bạn không phải là thành viên nhóm này"
+						message: "null"
 					});
 
-				req.flash("errors", { msg: "Bạn không ở trong nhóm chat này" });
+				req.flash("errors", { msg: "null" });
 				return res.redirect("/dashboard");
 			}
 			req.threadData = threadData;
@@ -106,26 +106,26 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 				return res.status(401).send({
 					status: "error",
 					error: "PERMISSION_DENIED",
-					message: "Bạn không có quyền chinh sửa nhóm này"
+					message: "null"
 				});
 
 			req.flash("errors", {
-				msg: "[!] Chỉ quản trị viên của nhóm chat hoặc những thành viên được cho phép mới có thể chỉnh sửa dashboard"
+				msg: "[!] null"
 			});
 			return res.redirect("/dashboard");
 		},
 
 		async isAdmin(req, res, next) {
 			const userID = req.user.facebookUserID;
-			if (!global.GoatBot.config.adminBot.includes(userID)) {
+			if (!global.ReneBot.config.adminBot.includes(userID)) {
 				if (isPostMethod(req))
 					return res.status(401).send({
 						status: "error",
 						error: "PERMISSION_DENIED",
-						message: "Bạn không phải là admin của bot"
+						message: "null"
 					});
 
-				req.flash("errors", { msg: "Bạn không phải là admin của bot" });
+				req.flash("errors", { msg: "null" });
 				return res.redirect("/dashboard");
 			}
 			next();
